@@ -1,0 +1,13 @@
+shiny>=1.6
+shinywidgets>=0.8
+plotly>=6.0
+pandas>=3.0
+pystac-client>=0.9
+planetary-computer>=1.0
+rasterio>=1.4
+rioxarray>=0.19
+xarray>=2025.1
+dask[array]>=2025.1
+exactextract>=0.3
+geopandas>=1.0
+titiler.application>=0.26
