@@ -1,1 +1,1 @@
-"""Feature modules for the IGAD Resilience Hub."""
+"""Feature modules for the Rangeland Observatory Hub."""

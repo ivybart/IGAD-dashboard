@@ -27,7 +27,7 @@ def _json_safe(value):
     return str(value)
 
 
-def map_container(points, *, center=(40.0, 1.0), zoom=4.3, height=390, label="Interactive map", geolocate=False, raster_tiles=None, raster_bounds=None, geojson=None, show_controls=True, locked=False, fit_geojson=False):
+def map_container(points, *, center=(40.0, 1.0), zoom=4.3, height=390, label="Interactive map", raster_tiles=None, raster_bounds=None, raster_minzoom=4, raster_maxzoom=14, geojson=None, show_controls=True, locked=False, fit_geojson=False):
     """Return a MapLibre host element with serialized GeoJSON-like marker data."""
     records = points.to_dict(orient="records") if hasattr(points, "to_dict") else points
     records = _json_safe(records)
@@ -38,9 +38,10 @@ def map_container(points, *, center=(40.0, 1.0), zoom=4.3, height=390, label="In
         data_points=json.dumps(records, allow_nan=False),
         data_center=json.dumps(list(center)),
         data_zoom=str(zoom),
-        data_geolocate="true" if geolocate else "false",
         data_raster_tiles=raster_tiles or "",
         data_raster_bounds=json.dumps(list(raster_bounds)) if raster_bounds else "",
+        data_raster_minzoom=str(raster_minzoom),
+        data_raster_maxzoom=str(raster_maxzoom),
         data_geojson=json.dumps(_json_safe(geojson), allow_nan=False) if geojson else "",
         data_show_controls="true" if show_controls else "false",
         data_locked="true" if locked else "false",

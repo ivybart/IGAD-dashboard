@@ -1,11 +1,12 @@
-"""IGAD Resilience Hub — modular Shiny dashboard."""
+"""Rangeland Observatory Hub — modular Shiny dashboard."""
 
 from shiny import App, ui
+from starlette.routing import Route
 
-from modules.citizen_reporting import citizen_reporting_server, citizen_reporting_ui
 from modules.drought_monitor import drought_monitor_server, drought_monitor_ui
 from modules.home import home_server, home_ui
 from modules.resource_management import resource_management_server, resource_management_ui
+from services.grassland_tiles import grassland_tile
 
 
 app_ui = ui.page_navbar(
@@ -16,23 +17,18 @@ app_ui = ui.page_navbar(
         icon=ui.tags.i(class_="bi bi-grid-1x2-fill"),
     ),
     ui.nav_panel(
-        "Drought monitor",
+        "Grassland health",
         drought_monitor_ui("drought"),
         icon=ui.tags.i(class_="bi bi-activity"),
     ),
     ui.nav_panel(
-        "Resource management",
+        "County planning",
         resource_management_ui("resources"),
-        icon=ui.tags.i(class_="bi bi-droplet-half"),
-    ),
-    ui.nav_panel(
-        "Citizen reporting",
-        citizen_reporting_ui("reports"),
-        icon=ui.tags.i(class_="bi bi-chat-square-text"),
+        icon=ui.tags.i(class_="bi bi-map-fill"),
     ),
     title=ui.div(
-        ui.span("IGAD", class_="brand-mark"),
-        ui.span("Resilience Hub", class_="brand-name"),
+        ui.span("Rangeland", class_="brand-mark"),
+        ui.span("Observatory Hub", class_="brand-name"),
         class_="brand-lockup",
     ),
     id="primary_nav",
@@ -53,11 +49,11 @@ app_ui = ui.page_navbar(
         ui.include_css("www/styles.css"),
         ui.include_js("www/maplibre-maps.js"),
         ui.include_js("www/loading-skeletons.js"),
-        ui.include_js("www/geolocation.js"),
+        ui.include_js("www/page-navigation.js"),
+        ui.include_js("www/resource-location.js"),
     ),
     footer=ui.div(
-        ui.span("IGAD Climate Resilience Programme"),
-        ui.span("Demo data · Updated monthly", class_="footer-note"),
+        ui.span("© GeoObservatory 2026"),
         class_="app-footer",
     ),
 )
@@ -67,7 +63,10 @@ def server(input, output, session):
     home_server("home")
     drought_monitor_server("drought")
     resource_management_server("resources")
-    citizen_reporting_server("reports")
 
 
 app = App(app_ui, server)
+app.starlette_app.router.routes.insert(
+    0,
+    Route("/grassland_cog_v2/{z:int}/{x:int}/{y:int}.png", grassland_tile),
+)
