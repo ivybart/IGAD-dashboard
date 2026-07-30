@@ -4,3 +4,5 @@ __pycache__/
 data/
 
 README_files/
+modules/__pycache__/
+services/__pycache__/
