@@ -32,11 +32,11 @@ def home_ui():
             ),
             class_="overview-intelligence-wrap",
         ),
-        ui.div(ui.div(ui.tags.span("GRASSLAND EVIDENCE", class_="eyebrow"), ui.h2("From regional picture to ward intelligence")), ui.p("Combine vegetation, rainfall, heat and surface-variability indicators into an actionable view of grazing conditions."), class_="section-heading"),
+        ui.div(ui.div(ui.tags.span("GRASSLAND EVIDENCE", class_="eyebrow"), ui.h2("Remote Sensing for Grassland Management")), ui.p("Combine vegetation, rainfall, heat and surface-variability indicators into an actionable view of grazing conditions."), class_="section-heading"),
         ui.div(
             ui.tags.a(
                 ui.div(ui.tags.i(class_="bi bi-activity"), class_="teaser-icon"),
-                ui.span("GRASSLAND INTELLIGENCE", class_="teaser-kicker"),
+                ui.span("GRASSLAND MONITORING", class_="teaser-kicker"),
                 ui.h3("Monitor grazing condition"),
                 ui.p("Map GCI classes alongside NDVI, rainfall and heat to identify poor wards and stronger alternatives."),
                 ui.span("Explore grasslands  →", class_="teaser-link"),
@@ -49,7 +49,7 @@ def home_ui():
                 ui.div(ui.tags.i(class_="bi bi-pin-map"), class_="teaser-icon"),
                 ui.span("COUNTY ACTION PLANNING", class_="teaser-kicker"),
                 ui.h3("Connect conditions to resources"),
-                ui.p("Create a county brief and map boreholes, seed banks, nurseries and livestock watering points."),
+                ui.p("Create a county brief and use the power of crowdsourcing to map resources in the rangelands and connect them to grazing conditions."),
                 ui.span("Open county planning  →", class_="teaser-link"),
                 href="#",
                 aria_label="Open County planning",
