@@ -1,4 +1,4 @@
-# Rangeland Observatory Hub
+# [Rangeland Observatory Hub](https://grasslandobservatory.ccb-technologies.co.ke/)
 
 Rangeland Observatory Hub is a ward-level grassland monitoring and county planning dashboard for Kenya's arid and semi-arid lands (ASALs). It combines vegetation, rainfall, temperature and surface-variability observations with local resource information to support early field verification and grazing decisions.
 
